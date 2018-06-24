@@ -17,6 +17,11 @@ declare sub to_upper_char_ptr                      _
            byVal p as string  _
         )
 
+declare sub bits_in_long                      _
+        lib "c:\github\VBA-calls-DLL\c\the.dll" (  _
+           byVal r as long  _
+        )
+
 sub main()
 
   dim a as double
@@ -38,5 +43,9 @@ sub main()
   str = "Foo Bar Baz"
   to_upper_char_ptr str
   msgBox str
+
+  dim l as long
+  l = &h80000051
+  call bits_in_long(l)
 
 end sub
