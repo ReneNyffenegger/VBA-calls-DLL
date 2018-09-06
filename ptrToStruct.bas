@@ -14,6 +14,12 @@ declare function passPtrFOO                                _
                  ptrFoo as FOO                             _
         ) as boolean
 
+declare function passPtrFOOasAny        _
+        lib "c:\github\VBA-calls-DLL\c\ptrToStruct.dll"    _
+        alias "passPtrFOO"                              (  _
+           NullPtrFoo as any                               _
+        ) as boolean
+
 '
 ' "Hack": Using a longPtr along with byVal, a null pointer
 ' can be passed to the DLL:
@@ -23,6 +29,7 @@ declare function passNullPtrFOO        _
         alias "passPtrFOO"                              (  _
            byVal NullPtrFoo as longPtr                     _
         ) as boolean
+
     
 
 sub main()
@@ -42,14 +49,26 @@ sub main()
        msgBox "passPtrFOO returned false"
     end if
 
+    if passPtrFOOasAny(f) then
+       msgBox "passPtrFOOasAny returned true"
+    else
+       msgBox "passPtrFOOasAny returned false"
+    end if
+
+    if passPtrFOOasAny(0) then
+       msgBox "passPtrFOOasAny returned true"
+    else
+       msgBox "passPtrFOOasAny returned false"
+    end if
+
   '
   ' Pass the number 0 as a longPtr which will be
   ' interpreted as a null pointer in the DLL:
   '
     if passNullPtrFOO( 0 ) then
-       msgBox "passPtrFOO returned true"
+       msgBox "passNullPtrFOO returned true"
     else
-       msgBox "passPtrFOO returned false"
+       msgBox "passNullPtrFOO returned false"
     end if
 
   '
@@ -58,9 +77,9 @@ sub main()
   ' an »h« is received.
   '
     if passNullPtrFOO( varPtr(f) ) then
-       msgBox "passPtrFOO returned true"
+       msgBox "passNullPtrFOO returned true"
     else
-       msgBox "passPtrFOO returned false"
+       msgBox "passNullPtrFOO returned false"
     end if
 
 end sub
