@@ -12,7 +12,7 @@ __declspec(dllexport) int __stdcall passPtrFOO(struct FOO* ptrFoo) {
   
       MessageBox(0, "ptrFoo is null", "passPtrFOO", 0);
   
-   // return 0 (fale) to indicate that ptrFoo was a null pointer
+   // return 0 (false) to indicate that ptrFoo was a null pointer
       return 0;
     }
   
