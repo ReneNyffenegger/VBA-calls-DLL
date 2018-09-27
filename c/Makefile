@@ -1,4 +1,4 @@
-all: ptrToStruct.dll asAny.dll returnStringArray.dll
+all: ptrToStruct.dll asAny.dll returnStringArray.dll fourLongs.dll
 
 asAny.dll: asAny.o
 	gcc -shared $< -o $@ -Wl,--add-stdcall-alias
@@ -16,4 +16,10 @@ returnStringArray.dll: returnStringArray.o
 	gcc -shared $< -o $@ -Wl,--add-stdcall-alias -lOleAut32
 
 returnStringArray.o: returnStringArray.c
+	gcc -c $< -o $@
+
+fourLongs.dll: fourLongs.o
+	gcc -shared $< -o $@ -Wl,--add-stdcall-alias
+
+fourLongs.o: fourLongs.c
 	gcc -c $< -o $@

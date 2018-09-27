@@ -61,7 +61,7 @@ __declspec(dllexport) SAFEARRAY* __stdcall funcsInDll(HMODULE hModule) {
     PIMAGE_EXPORT_DIRECTORY exports = (PIMAGE_EXPORT_DIRECTORY)((BYTE *)hModule + header-> OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_EXPORT].VirtualAddress);
 
     if (exports->AddressOfNames == 0) {
-        MessageBox(0, "exports->AddressOfNames == 0", 0, 0);
+    //  MessageBox(0, "exports->AddressOfNames == 0", 0, 0);
     }
 
     SAFEARRAYBOUND dimensions[1];
