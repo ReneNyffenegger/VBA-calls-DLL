@@ -44,22 +44,21 @@ sub main()
   ' Pass the struct as pointer.
   ' Works ok
   '
-    if passPtrFOO( ptrFoo := f ) then
-       msgBox "passPtrFOO returned true"
-    else
-       msgBox "passPtrFOO returned false"
+    if not passPtrFOO(           f ) then
+'   if not passPtrFOO( ptrFoo := f ) then
+       msgBox "Unexpectedly, passPtrFOO returned false"
     end if
 
-    if passPtrFOOasAny(f) then
-       msgBox "passPtrFOOasAny returned true"
-    else
-       msgBox "passPtrFOOasAny returned false"
+    if not passPtrFOOasAny(f) then
+       msgBox "Unexpectedly, passPtrFOOasAny returned false"
     end if
 
-    if passPtrFOOasAny(0) then
-       msgBox "passPtrFOOasAny returned true"
-    else
-       msgBox "passPtrFOOasAny returned false"
+  '
+  ' Trying to pass a null pointer.
+  ' It does not work if (or because) the parameter is declared with 'as any':
+  '
+    if not passPtrFOOasAny(0) then
+       msgBox "Unexpectely, passPtrFOOasAny returned false"
     end if
 
   '
@@ -67,9 +66,7 @@ sub main()
   ' interpreted as a null pointer in the DLL:
   '
     if passNullPtrFOO( 0 ) then
-       msgBox "passNullPtrFOO returned true"
-    else
-       msgBox "passNullPtrFOO returned false"
+       msgBox "Unexpectely, passNullPtrFOO returned true"
     end if
 
   '
@@ -77,10 +74,8 @@ sub main()
   ' not converted into a c string. Instead of »hello world", just
   ' an »h« is received.
   '
-    if passNullPtrFOO( varPtr(f) ) then
-       msgBox "passNullPtrFOO returned true"
-    else
-       msgBox "passNullPtrFOO returned false"
+    if not passNullPtrFOO( varPtr(f) ) then
+       msgBox "Unexpectedly, passNullPtrFOO returned false"
     end if
 
 end sub

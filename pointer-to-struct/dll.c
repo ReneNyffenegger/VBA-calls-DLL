@@ -7,19 +7,18 @@ struct FOO {
 
 __declspec(dllexport) int __stdcall passPtrFOO(struct FOO* ptrFoo) {
 
+    char buf[200];
 
     if (! ptrFoo) {
   
-      MessageBox(0, "ptrFoo is null", "passPtrFOO", 0);
+        MessageBox(0, "ptrFoo is null", "passPtrFOO", 0);
   
-   // return 0 (false) to indicate that ptrFoo was a null pointer
-      return 0;
+     // return 0 (false) to indicate that ptrFoo was a null pointer
+        return 0;
     }
   
   
-    char buf[200];
     wsprintf(buf, "str = %s, num = %i", ptrFoo->str, ptrFoo->num); 
-  
     MessageBox(0, buf, "passPtrFOO", 0);
   
  // return -1 (true) to indicate that ptrFoo was not a null pointer
