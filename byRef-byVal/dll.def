@@ -1,0 +1,6 @@
+LIBRARY the
+EXPORTS
+  swap_double_ptr
+  diff_double
+  to_upper_char_ptr
+  bits_in_long
