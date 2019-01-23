@@ -1,6 +1,6 @@
 option explicit
 
-declare function stringArray lib "c:\github\VBA-calls-DLL\c\returnStringArray.dll" () as string()
+declare function stringArray lib "c:\github\VBA-calls-DLL\return-string-array\the.dll" () as string()
 
 sub main() ' {
 

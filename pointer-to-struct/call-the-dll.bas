@@ -27,7 +27,7 @@ declare function passPtrFOOasAny        _
 '
 declare function passNullPtrFOO        _
         lib "c:\github\VBA-calls-DLL\pointer-to-struct\the.dll"  _
-        alias "passPtrFOO"                                       _
+        alias "passPtrFOO"                                    (  _
            byVal NullPtrFoo as longPtr                           _
         ) as boolean
 
