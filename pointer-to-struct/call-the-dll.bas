@@ -10,14 +10,15 @@ end type
 ' as a pointer to the DLL:
 '
 declare function passPtrFOO                                _
-        lib "c:\github\VBA-calls-DLL\c\ptrToStruct.dll" (  _
-                 ptrFoo as FOO                             _
+        lib "c:\github\VBA-calls-DLL\pointer-to-struct\the.dll"  _
+        alias "passPtrFOO"                                    (  _
+                 ptrFoo as FOO                                   _
         ) as boolean
 
 declare function passPtrFOOasAny        _
-        lib "c:\github\VBA-calls-DLL\c\ptrToStruct.dll"    _
-        alias "passPtrFOO"                              (  _
-           NullPtrFoo as any                               _
+        lib "c:\github\VBA-calls-DLL\pointer-to-struct\the.dll"  _
+        alias "passPtrFOO"                                    (  _
+           NullPtrFoo as any                                     _
         ) as boolean
 
 '
@@ -25,9 +26,9 @@ declare function passPtrFOOasAny        _
 ' can be passed to the DLL:
 '
 declare function passNullPtrFOO        _
-        lib "c:\github\VBA-calls-DLL\c\ptrToStruct.dll"    _
-        alias "passPtrFOO"                              (  _
-           byVal NullPtrFoo as longPtr                     _
+        lib "c:\github\VBA-calls-DLL\pointer-to-struct\the.dll"  _
+        alias "passPtrFOO"                                       _
+           byVal NullPtrFoo as longPtr                           _
         ) as boolean
 
     
