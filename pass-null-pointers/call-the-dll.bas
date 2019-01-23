@@ -1,8 +1,8 @@
 option explicit
 
-declare function asAny                               _
-        lib "c:\github\VBA-calls-DLL\c\asAny.dll" (  _
-               byVal  pointer as any                 _
+declare function asAny                                              _
+        lib "c:\github\VBA-calls-DLL\pass-null-pointers\the.dll" (  _
+               byVal  pointer as any                                _
         ) as boolean
 
 sub main()

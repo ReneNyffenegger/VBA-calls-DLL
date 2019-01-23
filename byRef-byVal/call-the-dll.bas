@@ -1,25 +1,25 @@
 option explicit
 
 declare sub swap_double_ptr                        _
-        lib "c:\github\VBA-calls-DLL\c\the.dll" (  _
-           byRef a as double,  _
-           byRef b as double   _
+        lib "c:\github\VBA-calls-DLL\byRef-byVal\the.dll" (  _
+           byRef a as double,                                _
+           byRef b as double                                 _
         )
 
 declare function diff_double                       _
-        lib "c:\github\VBA-calls-DLL\c\the.dll" (  _
-           byVal a as double,  _
-           byVal b as double   _
+        lib "c:\github\VBA-calls-DLL\byRef-byVal\the.dll" (  _
+           byVal a as double,                                _
+           byVal b as double                                 _
         ) as double
 
 declare sub to_upper_char_ptr                      _
-        lib "c:\github\VBA-calls-DLL\c\the.dll" (  _
-           byVal p as string  _
+        lib "c:\github\VBA-calls-DLL\byRef-byVal\the.dll" (  _
+           byVal p as string                                 _
         )
 
-declare sub bits_in_long                      _
-        lib "c:\github\VBA-calls-DLL\c\the.dll" (  _
-           byVal r as long  _
+declare sub bits_in_long                                     _
+        lib "c:\github\VBA-calls-DLL\byRef-byVal\the.dll" (  _
+           byVal r as long                                   _
         )
 
 sub main()
