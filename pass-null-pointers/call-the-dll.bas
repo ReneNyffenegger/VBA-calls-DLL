@@ -8,30 +8,32 @@ declare function asAny                                              _
 sub main()
 
     if asAny( nothing ) then
-    '  msgBox "asAny returned true"
+       debug.print("asAny( nothing )      returned true" )
     else
-       msgBox "asAny returned false"
+       debug.print("asAny( nothing )      returned false")
     end if
 
-'   if asAny( 0 ) then
-'   '  msgBox "asAny returned true"
-'   else
-'      msgBox "asAny returned false"
-'   end if
+  ' --------------------------------------------------------
+
+  ' if asAny( 0 ) then --> Compilie error: Type mismatch
+
+  ' --------------------------------------------------------
 
     if asAny( vbNullString ) then
-    '  msgBox "asAny returned true"
+       debug.print("asAny( vbNullString ) returned true" )
     else
-       msgBox "asAny returned false"
+       debug.print("asAny( vbNullString ) returned false")
     end if
+
+  ' --------------------------------------------------------
 
     dim text as string
     text = "Hello World"
 
     if asAny( text ) then
-    '  msgBox "asAny returned true"
+       debug.print("asAny( text )         returned true" )
     else
-       msgBox "asAny returned false"
+       debug.print("asAny( text )         returned false")
     end if
 
 end sub
