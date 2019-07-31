@@ -9,8 +9,8 @@ __declspec(dllexport) int __stdcall asAny(void* pointer) {
         return 0;
     }
   
-    wsprintf(buf, "pointer = %d, *pointer = %s", pointer, (char*) pointer); 
-    MessageBox(0, buf, "asAny", 0);
+    wsprintfA(buf, "pointer = %p, *pointer = %s", pointer, (wchar_t*) pointer); 
+    MessageBoxA(0, buf, "asAny", 0);
   
  // return -1 (true) to indicate that ptrFoo was not a null pointer
     return -1;
