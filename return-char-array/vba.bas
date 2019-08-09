@@ -1,11 +1,16 @@
 option explicit
 
-declare ptrSafe function charArray _
-        lib "the.dll" (            _
+declare ptrSafe function charArray  _
+        lib "the.dll" (             _
         ) as longPtr
 
+declare ptrSafe function wcharArray _
+        lib "the.dll" (             _
+        ) as longPtr
+
+
 private const CP_UTF8 as long = 65001
-declare ptrsafe function MultiByteToWideChar Lib "kernel32" ( _
+declare ptrsafe function MultiByteToWideChar lib "kernel32" ( _
   byVal CodePage        as long   , _
   byVal dwFlags         as long   , _
   byVal lpMultiByteStr  as longPtr, _
@@ -14,8 +19,17 @@ declare ptrsafe function MultiByteToWideChar Lib "kernel32" ( _
   byVal cchWideChar     as long     _
 ) as long
 
-'#if Win64 Then
-function utf8PtrToString(byVal pUtf8string as longPtr) as string
+declare ptrsafe function lstrlenW lib "kernel32" ( _
+  byVal lpSTring        as longPtr  _
+) as long
+
+declare ptrsafe function lstrcpyW lib "kernel32" ( _
+  byVal lpString1       as longPtr,  _
+  byVal lpString2       as longPtr   _
+) as longPtr
+
+'#if Win64 then
+function utf8PtrToString(byVal pUtf8string as longPtr) as string ' {
 ' #Else
 '   function utf8PtrToString(byVal pUtf8string as long   ) as string
 ' #End if
@@ -40,15 +54,26 @@ function utf8PtrToString(byVal pUtf8string as longPtr) as string
        err.raise 1000, "Error", "MultiByteToWideChar failed"
     end if
 
-end function
+end function ' }
 
+function wcharPtrToString(byVal wcharPtr as longPtr) as string ' {
+    dim cSize  as long
 
-sub main()
+    csize = lstrlenW(wcharPtr)
+    wcharPtrToString = string(cSize, "*")
+    lstrcpyW strPtr(wcharPtrToString), wcharPtr
 
-    dim s as string
+end function ' }
+
+sub main() ' {
+
+    dim  s as string
+    dim ws as string
 
     s = utf8PtrToString(charArray())
-
     debug.print("s = " & s)
 
-end sub
+    ws = wcharPtrToString(wcharArray())
+    debug.print("ws = " & ws)
+
+end sub ' }
