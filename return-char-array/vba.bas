@@ -8,6 +8,14 @@ declare ptrSafe function wcharArray _
         lib "the.dll" (             _
         ) as longPtr
 
+declare ptrSafe function bstr       _
+        lib "the.dll" (             _
+        ) as string
+
+declare ptrSafe function bstr_c     _
+        lib "the.dll" (             _
+        ) as string
+
 
 private const CP_UTF8 as long = 65001
 declare ptrsafe function MultiByteToWideChar lib "kernel32" ( _
@@ -75,5 +83,9 @@ sub main() ' {
 
     ws = wcharPtrToString(wcharArray())
     debug.print("ws = " & ws)
+
+    debug.print("bstr = " & bstr())
+
+    debug.print("bstr_c = " & bstr_c())
 
 end sub ' }
